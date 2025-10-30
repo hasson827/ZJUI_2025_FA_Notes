@@ -518,7 +518,7 @@ $$
 \frac{d}{dt}[\boldsymbol{u}(f(t))]&=f'(t)\boldsymbol{u}'(f(t))
 \end{aligned}
 $$
-**Theorem**: If $|\boldsymbol{r}(t)|=c$ (a constant), then $\boldsymbol{r}'(t)$ is orthogonal to $\bldsymbol{r}(t)$ for all $t$. 
+**Theorem**: If $|\boldsymbol{r}(t)|=c$ (a constant), then $\boldsymbol{r}'(t)$ is orthogonal to $\boldsymbol{r}(t)$ for all $t$. 
 
 **Proof**: Since
 $$
@@ -777,10 +777,8 @@ When we study the motion of a particle, it is often useful to resolve the accele
 
 If we write $v=|\boldsymbol{v}|$ for the speed of the particle, then
 $$
-\boldsymbol{T}(t)=\frac{\boldsymbol{r}'(t)}{|\boldsymbol{r}'(t)|}=\frac{\boldsymbol{v}(t)}{\boldsymbol{v}(t)}=\frac{\boldsymbol{v}}{v}
+\boldsymbol{T}(t)=\frac{\boldsymbol{r}'(t)}{|\boldsymbol{r}'(t)|}=\frac{\boldsymbol{v}(t)}{|\boldsymbol{v}(t)|}=\frac{\boldsymbol{v}}{v}\quad\text{and}\quad\boldsymbol{v}=v\boldsymbol{T}
 $$
-and so $\boldsymbol{v}=v\boldsymbol{T}$.
-
 If we differentiate both sides of this equation with respect to $t$, we get
 $$
 \boldsymbol{a}=\boldsymbol{v}'=v'\boldsymbol{T}+v\boldsymbol{T}'
@@ -1049,13 +1047,126 @@ $$
 1. To find $f_x$ regard $y$ as a constant and differentiate $f(x,y)$ with respect to $x$.
 2. To find $f_y$ regard $x$ as a constant and differentiate $f(x,y)$ with respect to $y$.
 
-
-
 ### Interpretations of Partial Derivatives
+
+To give a geometric interpretation of partial derivatives, we know that the equation $z=f(x,y)$ represents a surface $S$ (the graph of $f$). lf $f(a,b)=c$, then the point $P(a, b, c)$ lies on $S$. By fixing $y= b$, we are restricting our attention to the curve $C_1$,in which the vertical plane $y= b$ intersects $S$. (in other words, $C_1$ is the trace of $S$ in the plane $y=b$.) Likewise, the vertical plane $x= a$ intersects $S$ in a curve $C_2$. Both of the curves $C_1$ and $C_2$ pass through the point $P$.
 
 ### Functions of Three or More Variables
 
+Partial derivatives can also be defined for functions of three or more variables. For example, if $f$ is a function of three variables $x$, $y$, and $z$, then its partial derivative with respect to $x$ is defined as
+$$
+f_x(x,y,z)=\lim_{h\to0}\frac{f(x+h,y,z)-f(x,y,z)}{h}
+$$
+and it's found by regarding $y$ and $z$ as constants and differentiating $f(x,y,z)$ with respect to $x$.
+
+If $w=f(x,y,z)$, then $f_x=\frac{\partial w}{\partial x}$ can be interpreted as the rate of change of $w$ with respect to $x$ when $y$ and $z$ are held fixed. But we can't interpret it geometrically because the graph of $f$ lies in four-dimensioinal space.
+
+In general, if $u$ is a function of $n$ variables, $u = f(x_1, x_2,\dots,x_n)$, its partial derivative with respect to the $i$-th variable $x_i$ is
+$$
+\frac{\partial u}{\partial x_i}=\lim_{h\to0}\frac{f(x_1,\dots,x_{i-1},x_i+h,x_{i+1},\dots,x_n)-f(x_1,\dots,x_{i-1},x_i,x_{i+1},\dots,x_n)}{h}
+$$
+and we also write
+$$
+\frac{\partial u}{\partial x_i}=\frac{\partial{f}}{\partial{x_i}}=f_{x_i}=f_i=D_if
+$$
+
 ### Higher Derivatives
 
+If $f$ is a function of two variables, then its partial derivatives $f_x$ and $f_y$ are also functions of two variables, so we can consider their partial derivatives $(f_x)_x$, $(f_x)_y$, $(f_y)_x$, and $(f_y)_y$, which are called the **second partial derivatives** of $f$.
+
+If $z=f(x,y)$, we use the following notation
+$$
+(f_x)_x=f_{xx}=f_{11}= \frac{\partial}{\partial x}\left( \frac{\partial f}{\partial x} \right)=\frac{\partial^2f}{\partial x^2}=\frac{\partial^2z}{\partial x^2}
+\\[5pt]
+(f_y)_y=f_{yy}=f_{22}= \frac{\partial}{\partial y}\left( \frac{\partial f}{\partial y} \right)=\frac{\partial^2f}{\partial y^2}=\frac{\partial^2z}{\partial y^2}
+\\[5pt]
+(f_x)_y=f_{xy}=f_{12}= \frac{\partial}{\partial y}\left( \frac{\partial f}{\partial x} \right)=\frac{\partial^2f}{\partial y\partial x}=\frac{\partial^2z}{\partial y\partial x}
+\\[5pt]
+(f_y)_x=f_{yx}=f_{21}= \frac{\partial}{\partial x}\left( \frac{\partial f}{\partial y} \right)=\frac{\partial^2f}{\partial x\partial y}=\frac{\partial^2z}{\partial x\partial y}
+$$
+Thus the notation $f_{xy}$ means that we first differentiate with respect to $x$ and then with respect to $y$, whereas in computing $f_{yx}$ the order is reversed.
+
+**Clairaut's Theorem**: Suppose $f$ is defined on a disk $D$ that contains the point $(a,b)$. If the functions $f_{xy}$ and $f_{yx}$ are both continuous on $D$, then
+$$
+f_{xy}(a,b)=f_{yx}(a,b)
+$$
+Partial derivatives of order 3 or higher can also be defined. For instance, 
+$$
+f_{xyy}=(f_{xy})_y=\frac{\partial}{\partial y}\left( \frac{\partial^2f}{\partial y\partial x} \right)=\frac{\partial^3f}{\partial y^2\partial x}
+$$
+and using Clairaut's Theorem it can be shown that $f_{xyy}=f_{yxy}=f_{yyx}$ if these functions are continuous.
+
 ### Partial Differential Equations
+
+Partial derivatives occur in partial differential equations that express certain physical laws.
+For instance, the partial differential equation
+$$
+\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=0
+$$
+is called the **Laplace's equation**. Solutions of this equation are called **harmonic functions**; they play a role in problems of heat conduction, fluid flow, and electric potential.
+
+The **Wave equation**
+$$
+\frac{\partial^2u}{\partial t^2}=a^2\frac{\partial^2 u}{\partial x^2}
+$$
+describes the motion of a waveform, which could be an ocean wave, a sound wave, a light wave, or a wave traveling along a vibrating string.
+
+## Tangent Planes and Linear Approximations
+
+### Tangent Planes
+
+Suppose a surface $S$ has equation $z = f(x, y)$, where $f$ has continuous first partial derivatives, and let $P(x_0, y_0, z_0)$ be a point on $S$.
+
+Let $C_1$ and $C_2$ be the curves obtained by intersecting the vertical planes $y=y_0$ and $x=x_0$ with the surface $S$. Then the point $P$ lies on both $C_1$ and $C_2$. Let $T_1$ and $T_2$ be the tangent lines to the curves $C_1$ and $C_2$ at the point $P$. 
+
+Then the tangent plane to the surface $S$ at the point $P$ is defined to be the plane that contains both tangent lines $T_1$ and $T_2$.
+
+<img src="./assets/image-20251030112740533.png" alt="image-20251030112740533" style="zoom:30%;" /> 
+
+If $C$ is any other curve that lies on the surface $S$ and passes through $P$, then its tangent line at $P$ also lies in the tangent plane. Therefore you can think of the tangent plane to $S$ at $P$ as consisting of all possible tangent lines at $P$ to curves that lie on $S$ and pass through $P$. The tangent plane at $P$ is the plane that most closely approximates the surface $S$ near the point $P$.
+
+We know that any plane passing through the point $P(x_0,y_0,z_0)$ has an equation of the form
+$$
+A(x-x_0)+B(y-y_0)+C(z-z_0)=0
+$$
+By dividing this equation by $C$ and letting $a=-\frac{A}{C}$ and $b=-\frac{B}{C}$, we can write it in the form
+$$
+z-z_0=a(x-x_0)+b(y-y_0)
+$$
+If the equation represents the tangent plane at $p$, then its itersection with the plane $y=y_0$ must be the tangent line $T_1$. Setting $y=y_0$ gives
+$$
+z-z_0=a(x-x_0)\quad\text{where}\;y=y_0
+$$
+and we recognize this as the equation (in point-slope form) of a line with slope $a$.
+
+But we know that the slope of the tangent $T_1$ is $f_x(x_0,y_0)$. Therefore $a=f_x(x_0,y_0)$. Similarly, we get $z-z_0=b(y-y_0)$, which must represent the tangent line $T_2$, so $b=f_y(x_0,y_0)$. 
+
+**2 Equation of a Tangent Plane**: Suppose $f$ has continuous partial derivatives. An equation of the tangent plane to the surface $z=f(x,y)$ at the point $P(x_0,y_0,z_0)$ is 
+$$
+z-z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)
+$$
+
+### Linear Approximations
+
+An equation of the tangent plane to the graph of a function $f$ of two variables at the point $(a,b,f(a,b))$ is
+$$
+z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)
+$$
+The linear function whose graph is this tangent plane, namely
+$$
+L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)
+$$
+is called the **linearization** of $f$ at $(a,b)$.
+
+**Definition**: If $z=f(x,y)$, then $f$ is **differentiable** at $(a,b)$ if $\Delta z$ can be expressed in the form
+$$
+\Delta z=f_x(a,b)\Delta x+f_y(a,b)\Delta y+\varepsilon_1\Delta x+\varepsilon_2\Delta y
+$$
+where $\varepsilon_1$ and $\varepsilon_2$ are functions of $\Delta x$ and $\Delta y$ such that $\varepsilon_1,\varepsilon_2\to0$ as $(\Delta x,\Delta y)\to(0,0)$. The definition says taht a differentiable function is one for which the linear approximation is a good approximation when $(x,y)$ is near $(a,b)$. In other words, the tangent plane approximates the graph of $f$ well near the point of tangency.
+
+**Theorem**: lf the partial derivatives $f_x$ and $f_y$ exist near $(a,b)$ and are continuous at $(a,b)$, then $f$ is differentiable at $(a,b)$.
+
+### Differentials
+
+### Functions of Three or More Variables
 
