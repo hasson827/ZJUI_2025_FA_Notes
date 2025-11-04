@@ -1168,5 +1168,104 @@ where $\varepsilon_1$ and $\varepsilon_2$ are functions of $\Delta x$ and $\Delt
 
 ### Differentials
 
+For a differentiable function of two variables, $z=f(x,y)$, we define the **differentials** $dx$ and $dy$ to be independent variables: they can be given any values. Then the **differential** $dz$, also called the **total differential**, is defined by
+$$
+dz=f_x(x,y)dx+f_y(x,y)dy=\frac{\partial z}{\partial x}dx+\frac{\partial z}{\partial y}dy
+$$
+Sometimes the notation $df$ is used in place of $dz$. If we take $dx=\Delta x=x-a$ and $dy=\Delta y=y-b$, then the differential of $z$ is
+$$
+dz=f_x(a,b)(x-a)+f_y(a,b)(y-b)
+$$
+So, in the notation of differentials, the linear approximation can be written as 
+$$
+f(x,y)=f(a,b)+dz
+$$
+
 ### Functions of Three or More Variables
 
+Linear approximations, differentiability, and differentials can be defined in a similar manner for functions of more than two variables. For such functions the **linear approximation** is
+$$
+f(x,y,z)\approx f(a,b,c)=f_x(a,b,c)(x-a)+f_y(a,b,c)(y-b)+f_z(a,b,c)(z-c)
+$$
+and the linearization $L(x,y,z)$ is the right side of this expression.
+
+If $w=f(x,y,z)$, then the **increment** of $w$ is
+$$
+\Delta w=f(x+\Delta x,y+\Delta y,z+\Delta z)-f(x,y,z)
+$$
+The **differential** $dw$ is defined in terms of the differentials $dx,dy,dz$ of the independent variables by
+$$
+dw=\frac{\partial w}{\partial x}dx+\frac{\partial w}{\partial y}dy+\frac{\partial w}{\partial z}dz
+$$
+
+## Chain Rule
+
+### The Chain Rule
+
+We know that the Chain Rule for functions of a single variable gives the rule for differentiating a composite function: If $y=f(x)$ and $x=g(t)$, where $f$ and $g$ are differentiable functions then $y$ is indirectly a differentiable function of $t$ and
+$$
+\frac{dy}{dt}=\frac{dy}{dx}\frac{dx}{dt}
+$$
+For functions of more than one variable, the Chain Rule has several versions, each of them giving a rule for differentiating a composite function.
+
+The first version (Theorem 1) deals with the case where $z=f(x,y)$ and each ofthe variables $x$ and $y$ is, in turn, a function of a variable $t$. This means that $z$ is indirectly a function of $t$, $z = f(g(t), h(t))$, and the Chain Rule gives a formula for differentiating $z$ as a function of $t$. We assume that $f$ is differentiable. We know that this is the case when $f_x$ and $f_y$ are continuous.
+
+**The Chain Rule (Case 1)** Suppose that $z=f(x,y)$ is a differentiable function of $x$ and $y$, where $x=g(y)$ and $y=h(t)$ are both differentiable functions of $t$. Then $z$ is a differentiable function of $t$ and
+$$
+\frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}
+$$
+Since we often write $\frac{\partial z}{\partial x}$ in place of $\frac{\partial f}{\partial x}$, we can rewrite the Chain Rule in the form
+$$
+\frac{dz}{dt}=\frac{\partial z}{\partial x}\frac{dx}{dt}+\frac{\partial z}{\partial y}\frac{dy}{dt}
+$$
+We now consider the situation where $z=f(x,y)$ but each of $x$ and $y$ is a function of two variables $s$ and $t$: $x=g(s,t)$, $y=h(s,t)$. Then $z$ is indirectly a function of $s$ and $t$ and we wish to find $\frac{\partial z}{\partial s}$ and $\frac{\partial z}{\partial t}$. We know that in computing $\frac{\partial z}{\partial t}$ we hold $s$ fixed and compute the ordinary derivative of $z$ with respect to $t$. Therefore we can obtain
+$$
+\frac{\partial z}{\partial t}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial t}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial t}
+$$
+A similar argument holds for $\frac{\partial z}{\partial s}$ and so we have proved the following version of the Chain Rule.
+
+**The Chain Rule (Case 2)** Suppose that $z = f(x, y)$ is a differentiable functionof $x$ and $y$, where $x= g(s, t)$ and $y= h(s, t)$ are differentiable functions of $s$ and $t$.Then
+$$
+\frac{\partial z}{\partial t}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial t}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial t}\quad \frac{\partial z}{\partial s}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial s}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial s}
+$$
+Case 2 of the Chain Rule contains three types of variables: $s$ and $t$ are independent variables. $x$ and $y$ are **intermediate** variables. and $z$ is the dependent variable.
+
+To remember the Chain Rule, it's useful to draw the **tree diagram**.
+
+<img src="./assets/image-20251104113054653.png" alt="image-20251104113054653" style="zoom:40%;" />
+
+### The Chain Rule: General Version
+
+Now we consider the general situation in which a dependent variable $u$ is a function of $n$ intermediate variables $x_1,\dots,x_n$, each of which is, in turn, a function of $m$ independent variables $t_1,\dots,t_m$.
+
+**The Chain Rule (General Version)** Suppose that $u$ is a differentiable function of the $n$ variables $x_1,x_2,\dots,x_n$ and each $x_j$ is a differentiable function of the $m$ variables $t_1,t_2,\dots,t_m$. Then $u$ is a function of $t_1,t_2,\dots,t_m$ and
+$$
+\frac{\partial u}{\partial t_j}=\sum_{i=1}^{n}\frac{\partial u}{\partial x_i}\frac{\partial x_i}{\partial t_j}
+$$
+
+### Implicit Differentiation
+
+The Chain Rule can be used to give a more complete description of the process of implicit differentiation.
+
+We suppose that an equation of the form $F(x,y)=0$ defines $y$ implicitly as a differentiable function of $x$, that is, $y=f(x)$, where $F(x,f(x))=0$ for all $x$ in the domain of $f$. If $F$ is differentiable, we can apply Case 1 of the Chain Rule to differentiate both sides of the equation $F(x,y)=0$ with respect to $x$. Since both $x$ and $y$ are functions of $x$, we obtain
+$$
+\frac{\partial F}{\partial x}\frac{dx}{dx}+\frac{\partial F}{\partial y}\frac{dy}{dx}=0
+$$
+But $\frac{dx}{dx}=1$, so if $\frac{\partial F}{\partial x}\ne0$ we solve for $\frac{dy}{dx}$ and obtain
+$$
+\frac{dy}{dx}=-\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial y}}=-\frac{F_x}{F_y}
+$$
+To derive this equation we assumed that $F(x, y)= 0$ defines $y$ implicitly as a function of $x$.
+
+Now we suppose that $z$ is given implicitly as a function $z = f(x, y)$ by an equationof the form $F(x, y, z)= 0$. This means that $F(x,y,f(x,y))=0$ for all $(x,y)$ in the domain of $f$. If $F$ and $f$ are differentiable, then we can use the Chain Rule to differentiate the equation $F(x,y,z)=0$ as follows:
+$$
+\frac{\partial F}{\partial x}\frac{\partial x}{\partial x}+\frac{\partial F}{\partial y}\frac{\partial y}{\partial x}+\frac{\partial F}{\partial z}\frac{\partial z}{\partial x}=0
+$$
+But $\frac{\partial x}{\partial x}=1$ and $\frac{\partial y}{\partial x}=0$, so this equation becomes 
+$$
+\frac{\partial F}{\partial x}+\frac{\partial F}{\partial z}\frac{\partial z}{\partial x}=0
+$$
+If $\frac{\partial F}{\partial z}\ne0$, wo solve for $\frac{\partial z}{\partial x}$ and obtain the first formula, the formula for $\frac{\partial z}{\partial y}$ is obtained in a similar manner.
+$$
+\frac{\partial z}{\partial x}=-\frac{\frac{\partial F}{\partial x}}{\frac{\partial F}{\partial z}}=-\frac{F_x}{F_z}\quad \frac{\partial z}{\partial y}=-\frac{\frac{\partial F}{\partial y}}{\frac{\partial F}{\partial z}}=-\frac{F_y}{F_z}
+$$
